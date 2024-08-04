@@ -5,7 +5,7 @@ from backend.app import create_app
 app = create_app()
 
 import os
-running = os.environ.get('APP_ENV') or 'development'
+running = os.environ['APP_ENV']
 debug = running == 'development'
 
 if __name__ == '__main__':

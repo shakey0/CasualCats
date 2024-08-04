@@ -8,6 +8,9 @@
     <title>Casual Cats</title>
   </head>
   <body>
+    {% if cat %}
+    <div id="cat" data-cat="{{ cat }}"></div>
+    {% endif %}
     <div id="root"></div>
     {% if env == 'development' %}
     <script src="http://localhost:9000/bundle.js"></script>

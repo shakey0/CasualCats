@@ -1,7 +1,19 @@
-from flask import Blueprint, render_template, redirect, request, make_response, jsonify, flash
+from flask import Blueprint, render_template
+import os
 
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
   return render_template('index.html')
+
+@main.route('/<cat>')
+def profile(cat):
+  try:
+    cats = os.environ.get('CATS').split(',')
+    if cat in cats:
+      return render_template(f'index.html', cat=cat)
+    else:
+      return render_template('404.html')
+  except:
+    return render_template('404.html')

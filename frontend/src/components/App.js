@@ -1,9 +1,9 @@
 import React from "react";
 
-const App = () => {
+const App = ({ cat }) => {
   return (
     <div>
-      <h1>Hello, React!</h1>
+      <h1>Hello, {cat}!</h1>
     </div>
   );
 };
