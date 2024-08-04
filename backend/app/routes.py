@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, jsonify
 import os
 
 main = Blueprint('main', __name__)
@@ -6,6 +6,11 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def index():
   return render_template('index.html')
+
+@main.route('/api/cats')
+def cats():
+  cats = os.environ.get('CATS').replace('+', ' & ').title().split(',')
+  return jsonify(cats)
 
 @main.route('/<cat>')
 def profile(cat):

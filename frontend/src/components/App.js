@@ -1,9 +1,16 @@
 import React from "react";
+import CatList from "./CatList";
 
 const App = ({ cat }) => {
   return (
     <div>
-      <h1>Hello, {cat}!</h1>
+      {cat === "home" ? (
+        <CatList />
+      ) : (
+        <div>
+          <h1>It's {cat}!</h1>
+        </div>
+      )}
     </div>
   );
 };
