@@ -1,8 +1,10 @@
 from flask import Flask, g, request, make_response, jsonify
 from flask_wtf.csrf import CSRFProtect, generate_csrf
+import os
 
 def create_app():
   app = Flask(__name__)
+  app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
   
   csrf = CSRFProtect()
   csrf.init_app(app)
@@ -16,12 +18,13 @@ def create_app():
     g.show_privacy_policy = not request.cookies.get('privacy_policy_seen')
 
   @app.context_processor
-  def inject_privacy_policy_flag():
-    return dict(show_privacy_policy=g.show_privacy_policy)
-  
-  @app.context_processor
-  def inject_csrf_token():
-      return dict(csrf_token=generate_csrf())
+  def inject_common_context():
+    env = 'development' if app.debug else 'production'
+    return {
+      'show_privacy_policy': g.show_privacy_policy,
+      'csrf_token': generate_csrf(),
+      'env': env
+    }
   
   @app.route('/acknowledge_privacy_policy')
   def acknowledge_privacy_policy():

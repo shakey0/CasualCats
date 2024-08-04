@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token }}" />
-    <title>Home</title>
+    <link rel="icon" href="/static/favicon.png" />
+    <title>Casual Cats</title>
   </head>
-  <body></body>
+  <body>
+    <div id="root"></div>
+    {% if env == 'development' %}
+    <script src="http://localhost:9000/bundle.js"></script>
+    {% else %}
+    <script src="/static/bundle.js"></script>
+    {% endif %}
+  </body>
 </html>

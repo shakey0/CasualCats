@@ -1,0 +1,66 @@
+# Python files
+*.pyc
+*.pyo
+*.pyd
+**/__pycache__/
+*.swp
+
+# Environment files
+.env
+.venv/
+env/
+venv/
+ENV/
+ENV.bak/
+venv.bak/
+
+# Flask/WTF Secret Key
+instance/
+
+# Node.js files
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Compiled files
+*.o
+*.so
+*.out
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Coverage reports
+.coverage
+coverage.xml
+*.cover
+.hypothesis/
+.tox/
+
+# Test files
+.pytest_cache/
+
+# Build files
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Webpack files
+/public/
+.bundle/
+
+# Other
+persistence_disk/
