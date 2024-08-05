@@ -9,8 +9,9 @@ def index():
 
 @main.route('/api/cats')
 def cats():
-  cats = os.environ.get('CATS').replace('+', ' & ').title().split(',')
-  return jsonify(cats)
+  cats = os.environ.get('CATS').split(',')
+  cats_dict = {cat: cat.replace('+', ' & ').title() for cat in cats}
+  return jsonify(cats_dict)
 
 @main.route('/<cat>')
 def profile(cat):

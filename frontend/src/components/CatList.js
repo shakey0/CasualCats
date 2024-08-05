@@ -1,7 +1,7 @@
 import React from "react";
 
 const CatList = () => {
-  const [cats, setCats] = React.useState([]);
+  const [cats, setCats] = React.useState({});
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -26,10 +26,12 @@ const CatList = () => {
     <div>
       <h1>Cats</h1>
       {loading && <p>Loading...</p>}
-      {!loading && cats.length > 0 && (
+      {!loading && Object.keys(cats).length > 0 && (
         <div>
-          {cats.map((cat, index) => (
-            <div key={index}>{cat}</div>
+          {Object.entries(cats).map(([key, value], index) => (
+            <a href={`/${key}`} key={index}>
+              {value}
+            </a>
           ))}
         </div>
       )}
