@@ -3,7 +3,7 @@ import CatList from "./CatList";
 import CatProfile from "./CatProfile";
 
 const App = ({ cat }) => {
-  return <div>{cat === "home" ? <CatList /> : <CatProfile cat={cat} />}</div>;
+  return <>{cat === "home" ? <CatList /> : <CatProfile cat={cat} />}</>;
 };
 
 export default App;
